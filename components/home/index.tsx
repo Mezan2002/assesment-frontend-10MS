@@ -12,6 +12,7 @@ const CourseDetails = ({ data }: { data: Data }) => {
       <TopBanner
         topBannerContent={TopBannerContent}
         trailerCardContent={data.media}
+        checklistContent={data.checklist}
       />
     </div>
   );

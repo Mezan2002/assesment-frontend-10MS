@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import TrailerCard from "@/components/home/TrailerCard";
 
-import { Media } from "@/types";
+import { Checklist, Media } from "@/types";
 
 interface TopBannerProps {
   topBannerContent: {
@@ -10,11 +10,13 @@ interface TopBannerProps {
     description: string;
   };
   trailerCardContent: Media[];
+  checklistContent: Checklist[];
 }
 
 const TopBanner = ({
   topBannerContent,
   trailerCardContent,
+  checklistContent,
 }: TopBannerProps) => {
   const { title, description } = topBannerContent;
 
@@ -53,7 +55,10 @@ const TopBanner = ({
             />
           </div>
         </div>
-        <TrailerCard trailerCardData={trailerCardContent} />
+        <TrailerCard
+          trailerCardData={trailerCardContent}
+          checklistContent={checklistContent}
+        />
       </div>
     </div>
   );

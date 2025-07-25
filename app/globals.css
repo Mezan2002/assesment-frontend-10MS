@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 /* global css */
+body {
+  font-family: var(--font-noto-sans-bengali), var(--font-inter);
+}
+
 .hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
