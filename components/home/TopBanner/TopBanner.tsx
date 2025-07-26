@@ -31,7 +31,7 @@ const TopBanner = ({
       className="h-[300px]"
     >
       <div className="flex flex-col gap-4 md:flex-row md:gap-12 md:py-20 items-start px-[370px] relative">
-        <div className="flex flex-col justify-center flex-1">
+        <div className="flex flex-col justify-center w-8/12">
           <h1 className="text-white mb-2 text-[21px] font-semibold  md:text-4xl">
             {title}
           </h1>
@@ -53,10 +53,13 @@ const TopBanner = ({
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>
-        <TrailerCard
-          trailerCardData={trailerCardContent}
-          checklistContent={checklistContent}
-        />
+
+        <div className="fixed right-[20%] top-[5%]">
+          <TrailerCard
+            trailerCardData={trailerCardContent}
+            checklistContent={checklistContent}
+          />
+        </div>
       </div>
     </section>
   );
