@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 import MiniThumbnailController from "@/components/home/MiniThumbnailController";
-import MediaPlayerIcon from "@/helpers/ui/customSVG/mediaPlayerIcon";
+import MediaPlayerIcon from "@/helpers/ui/customSVG/MediaPlayerIcon";
 import { Media } from "@/types";
 
 const ImageSlider = ({ trailerCardData }: { trailerCardData: Media[] }) => {
