@@ -2,6 +2,7 @@ import { Section } from "@/types";
 import CourseDetails from "./CourseDetails";
 import CourseInstructor from "./CourseInstructor";
 import CourseLaidOut from "./CourseLaidOut";
+import ExclusiveFeatures from "./ExclusiveFeatures";
 import WhatYouWillLearn from "./WhatYouWillLearn";
 
 type SectionsOfTheCourseProps = {
@@ -30,6 +31,10 @@ const SectionsOfTheCourse = ({
         )}
 
         {context === "about" && <CourseDetails courseDetailsData={data} />}
+
+        {context === "feature_explanations" && (
+          <ExclusiveFeatures exclusiveFeaturesData={data} />
+        )}
       </div>
     </section>
   );
