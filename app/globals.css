@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
 /* global css */
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* Standard syntax */
+}
+
 body {
-  font-family: var(--font-noto-sans-bengali), var(--font-inter);
+  font-family: var(--font-inter), var(--font-noto-sans-bengali);
+}
+
+@theme {
+  /* Colors */
+  --color-primary: #15803d;
+  --color-primary-light: #1b9d4a;
+
+  /* Fonts */
+  --font-inter: "Inter", sans-serif;
+  --font-noto-sans-bengali: "Noto Sans Bengali", sans-serif;
 }
 
 .hide-scrollbar {

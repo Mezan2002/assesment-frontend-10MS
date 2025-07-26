@@ -1,26 +1,26 @@
 import CourseDetails from "@/components/home";
 import SEOHead from "@/components/SEOHead";
-
 import { ApiResponse, Data } from "@/types";
 
 interface Props {
-  searchParams: { lang?: string };
+  searchParams: Promise<{ lang?: string }>;
 }
 
-export default async function ProductPage({ searchParams }: Props) {
-  const lang = searchParams?.lang || "en";
+export default async function HomePage({ searchParams }: Props) {
+  const resolvedSearchParams = await searchParams;
+  const lang = resolvedSearchParams.lang || "en";
   let data: Data | null = null;
   let error: string | null = null;
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}?lang=${lang}`,
+      `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`,
       {
         headers: {
           "X-TENMS-SOURCE-PLATFORM": "web",
           accept: "application/json",
         },
-        next: { revalidate: 3600 },
+        // next: { revalidate: 3600 },
       }
     );
 
@@ -44,11 +44,11 @@ export default async function ProductPage({ searchParams }: Props) {
   const SEOData = {
     title: data.seo.title || "IELTS Course by Munzereen Shahid",
     description: data.seo.description || "IELTS Course by Munzereen Shahid",
-    keywords: data.seo.keywords || ["IELTS, course, Munzereen Shahid"],
+    keywords: data.seo.keywords || ["IELTS", "course", "Munzereen Shahid"],
   };
 
   return (
-    <main>
+    <main className="">
       {/* SEO Head */}
       <SEOHead SEOData={SEOData} />
 
@@ -58,9 +58,10 @@ export default async function ProductPage({ searchParams }: Props) {
   );
 }
 
-// generateMetadata function to fetch SEO data
 export async function generateMetadata({ searchParams }: Props) {
-  const lang = searchParams.lang || "en";
+  const resolvedSearchParams = await searchParams;
+  const lang = resolvedSearchParams.lang || "en";
+
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}?lang=${lang}`,
@@ -82,15 +83,15 @@ export async function generateMetadata({ searchParams }: Props) {
     return {
       title: data.seo.title || "IELTS Course by Munzereen Shahid",
       description: data.seo.description || "IELTS Course by Munzereen Shahid",
-      keywords: data.seo.keywords?.forEach((keyword) => keyword) || [
-        "IELTS, course, Munzereen Shahid",
-      ],
+      keywords: data.seo.keywords || ["IELTS", "course", "Munzereen Shahid"],
     };
   } catch (error) {
+    console.error("Failed to generate metadata:", error);
+    // Fallback metadata to prevent build failure
     return {
       title: "IELTS Course by Munzereen Shahid",
-      description: "Learn IELTS with expert guidance from Munzereen Shahid.",
-      keywords: "IELTS, course, Munzereen Shahid",
+      description: "IELTS Course by Munzereen Shahid",
+      keywords: ["IELTS", "course", "Munzereen Shahid"],
     };
   }
 }

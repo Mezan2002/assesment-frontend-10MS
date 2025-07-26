@@ -8,7 +8,7 @@ const Button = ({
   return (
     <button
       type="button"
-      className="bg-[#1b9d4a] hover:bg-[#15803D] py-2 shadow-[0_4px_0px_0px_#0e5e2b] active:shadow-[0_0px_0px_0px_#0e5e2b] rounded-md w-full text-white cursor-pointer active:scale-95 transition-all duration-300"
+      className="bg-primary hover:bg-primary-light py-2 shadow-[0_4px_0px_0px_#0e5e2b] active:shadow-[0_0px_0px_0px_#0e5e2b] rounded-md w-full text-white cursor-pointer active:scale-95 transition-all duration-300"
       onClick={onClick}
     >
       {title}

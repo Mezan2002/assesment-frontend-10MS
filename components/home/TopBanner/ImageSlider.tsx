@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
-import MiniThumbnailController from "@/components/home/MiniThumbnailController";
+import MiniThumbnailController from "@/components/home/TopBanner/MiniThumbnailController";
 import MediaPlayerIcon from "@/helpers/ui/customSVG/MediaPlayerIcon";
 import { Media } from "@/types";
 
