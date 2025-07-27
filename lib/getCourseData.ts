@@ -2,10 +2,10 @@ import { API_HEADERS } from "@/lib/constants";
 import { ApiResponse } from "@/types";
 
 export async function getCourseData(lang: string = "en"): Promise<ApiResponse> {
-  const apiBaseUrl =
+  const baseApiUrl =
     process.env.NEXT_PUBLIC_API_URL ||
-    "https://api.10minuteschool.com/discovery-service/api/v1";
-  const apiUrl = `${apiBaseUrl}/products/ielts-course?lang=${lang}`;
+    "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course";
+  const apiUrl = `${baseApiUrl}?lang=${lang}`;
   const response = await fetch(apiUrl, {
     headers: API_HEADERS,
     // next: { revalidate: 3600 },
