@@ -1,6 +1,6 @@
 import CourseDetails from "@/components/home";
-import SEOHead from "@/components/SEOHead";
-import { ApiResponse, Data } from "@/types";
+import { getCourseData } from "@/lib/getCourseData";
+import { Data } from "@/types";
 
 interface Props {
   searchParams: Promise<{ lang?: string }>;
@@ -9,25 +9,12 @@ interface Props {
 export default async function HomePage({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams;
   const lang = resolvedSearchParams.lang || "en";
+
   let data: Data | null = null;
   let error: string | null = null;
 
   try {
-    const response = await fetch(
-      `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`,
-      {
-        headers: {
-          "X-TENMS-SOURCE-PLATFORM": "web",
-          accept: "application/json",
-        },
-        // next: { revalidate: 3600 },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const apiResponse: ApiResponse = await response.json();
+    const apiResponse = await getCourseData(lang);
     data = apiResponse.data;
   } catch (err) {
     error = err instanceof Error ? err.message : "Unknown error";
@@ -41,57 +28,9 @@ export default async function HomePage({ searchParams }: Props) {
     return <div className="text-center">Loading...</div>;
   }
 
-  const SEOData = {
-    title: data.seo.title || "IELTS Course by Munzereen Shahid",
-    description: data.seo.description || "IELTS Course by Munzereen Shahid",
-    keywords: data.seo.keywords || ["IELTS", "course", "Munzereen Shahid"],
-  };
-
   return (
-    <main className="">
-      {/* SEO Head */}
-      <SEOHead SEOData={SEOData} />
-
-      {/* course details */}
+    <main>
       <CourseDetails data={data} />
     </main>
   );
-}
-
-export async function generateMetadata({ searchParams }: Props) {
-  const resolvedSearchParams = await searchParams;
-  const lang = resolvedSearchParams.lang || "en";
-
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}?lang=${lang}`,
-      {
-        headers: {
-          "X-TENMS-SOURCE-PLATFORM": "web",
-          accept: "application/json",
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch metadata");
-    }
-
-    const apiResponse: ApiResponse = await response.json();
-    const data = apiResponse.data;
-
-    return {
-      title: data.seo.title || "IELTS Course by Munzereen Shahid",
-      description: data.seo.description || "IELTS Course by Munzereen Shahid",
-      keywords: data.seo.keywords || ["IELTS", "course", "Munzereen Shahid"],
-    };
-  } catch (error) {
-    console.error("Failed to generate metadata:", error);
-    // Fallback metadata to prevent build failure
-    return {
-      title: "IELTS Course by Munzereen Shahid",
-      description: "IELTS Course by Munzereen Shahid",
-      keywords: ["IELTS", "course", "Munzereen Shahid"],
-    };
-  }
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { generateDynamicMetadata } from "@/lib/getDynamicMetadata";
 import { Inter, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 
@@ -12,11 +12,9 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Best IELTS Course by Munzereen Shahid",
-  description:
-    "Get complete preparation of Academic IELTS and General Training IELTS in one course! Join our IELTS Course today to achieve your desired band score under the guidance of the best IELTS Instructor in the country.",
-};
+export async function generateMetadata() {
+  return generateDynamicMetadata();
+}
 
 export default function RootLayout({
   children,

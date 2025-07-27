@@ -1,8 +1,7 @@
 import Image from "next/image";
 
-import TrailerCard from "@/components/home/TopBanner/TrailerCard";
-
 import { Checklist, Media } from "@/types";
+import StickyTrailerCard from "./StickyTrailerCard";
 
 interface TopBannerProps {
   topBannerContent: {
@@ -54,12 +53,10 @@ const TopBanner = ({
           />
         </div>
 
-        <div className="fixed right-[20%] top-[5%]">
-          <TrailerCard
-            trailerCardData={trailerCardContent}
-            checklistContent={checklistContent}
-          />
-        </div>
+        <StickyTrailerCard
+          trailerCardData={trailerCardContent}
+          checklistContent={checklistContent}
+        />
       </div>
     </section>
   );
