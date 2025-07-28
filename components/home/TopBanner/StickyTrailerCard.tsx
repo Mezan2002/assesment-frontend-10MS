@@ -7,11 +7,13 @@ import { useEffect, useRef, useState } from "react";
 interface StickyTrailerCardProps {
   trailerCardData: Media[];
   checklistContent: Checklist[];
+  buttonText: string;
 }
 
 const StickyTrailerCard = ({
   trailerCardData,
   checklistContent,
+  buttonText,
 }: StickyTrailerCardProps) => {
   const trailerCardRef = useRef<HTMLDivElement>(null);
   const [isCrossedScrollLimit, setIsCrossedScrollLimit] = useState(false);
@@ -41,6 +43,7 @@ const StickyTrailerCard = ({
       } right-[20%]`}
     >
       <TrailerCard
+        buttonText={buttonText}
         isCrossedScrollLimit={isCrossedScrollLimit}
         trailerCardData={trailerCardData}
         checklistContent={checklistContent}

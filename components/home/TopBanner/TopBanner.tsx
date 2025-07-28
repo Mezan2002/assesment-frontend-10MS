@@ -10,12 +10,14 @@ interface TopBannerProps {
   };
   trailerCardContent: Media[];
   checklistContent: Checklist[];
+  buttonText: string;
 }
 
 const TopBanner = ({
   topBannerContent,
   trailerCardContent,
   checklistContent,
+  buttonText,
 }: TopBannerProps) => {
   const { title, description } = topBannerContent;
 
@@ -54,6 +56,7 @@ const TopBanner = ({
         </div>
 
         <StickyTrailerCard
+          buttonText={buttonText}
           trailerCardData={trailerCardContent}
           checklistContent={checklistContent}
         />

@@ -27,6 +27,7 @@ const CourseDetails = ({ data }: { data: Data }) => {
         topBannerContent={TopBannerContent}
         trailerCardContent={data.media}
         checklistContent={data.checklist}
+        buttonText={data.cta_text.name}
       />
       <div className="mt-5">
         {filteredSections.map(

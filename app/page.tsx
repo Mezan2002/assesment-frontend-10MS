@@ -1,5 +1,6 @@
 import Loader from "@/components/common-components/Loader";
 import CourseDetails from "@/components/home";
+import TopNav from "@/components/home/TopNav";
 import { getCourseData } from "@/lib/getCourseData";
 import { Data } from "@/types";
 
@@ -31,6 +32,7 @@ export default async function HomePage({ searchParams }: Props) {
 
   return (
     <main>
+      <TopNav />
       <CourseDetails data={data} />
     </main>
   );

@@ -10,12 +10,14 @@ interface TrailerCardProps {
   isCrossedScrollLimit: boolean;
   trailerCardData: Media[];
   checklistContent: Checklist[];
+  buttonText: string;
 }
 
 const TrailerCard = ({
   isCrossedScrollLimit,
   trailerCardData,
   checklistContent,
+  buttonText,
 }: TrailerCardProps) => {
   return (
     <div className={isCrossedScrollLimit ? "animate-pop-out" : ""}>
@@ -27,13 +29,8 @@ const TrailerCard = ({
           <div className="p-4 w-full">
             <div className="md:mb-3">
               <h5 className="inline-block text-2xl font-semibold">৳1000</h5>
-              <span className="inline-flex">
-                <del className="ml-2 text-base font-normal md:text-xl">
-                  ৳3000
-                </del>
-              </span>
             </div>
-            <Button />
+            <Button title={buttonText} />
           </div>
         </div>
         <Checklists checklistContent={checklistContent} />

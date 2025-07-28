@@ -1,5 +1,5 @@
 const Button = ({
-  title = "Enroll",
+  title = "",
   onClick = () => {},
 }: {
   title?: string;
