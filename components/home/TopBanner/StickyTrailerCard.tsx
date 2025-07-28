@@ -40,8 +40,8 @@ const StickyTrailerCard = ({
       ref={trailerCardRef}
       className={
         isCrossedScrollLimit
-          ? "fixed top-5 xl:right-[20%]"
-          : "absolute top-[20%] right-5"
+          ? "fixed top-5 xl:right-[20%] z-50"
+          : "absolute top-[20%] right-5 z-50"
       }
     >
       <TrailerCard

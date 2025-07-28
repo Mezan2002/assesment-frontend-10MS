@@ -1,18 +1,11 @@
 import SectionsOfTheCourse from "@/components/home/SectionsOfTheCourse/index";
+import { sectionsNeedToShow } from "@/lib/constants";
 
 import { Data } from "@/types";
 
 const CourseDetails = ({ data }: { data: Data }) => {
-  const neededSections = [
-    "instructors",
-    "features",
-    "pointers",
-    "feature_explanations",
-    "about",
-  ];
-
   const filteredSections = data.sections.filter((item) =>
-    neededSections.includes(item.type)
+    sectionsNeedToShow.includes(item.type)
   );
 
   return (

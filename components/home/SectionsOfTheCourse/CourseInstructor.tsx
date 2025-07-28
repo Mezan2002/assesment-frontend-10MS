@@ -20,12 +20,12 @@ const CourseInstructor = ({
           className="rounded-full -mt-5"
         />
         <div>
-          <h5 className="text-gray-900 text-lg flex items-center gap-1.5 hover:text-primary cursor-pointer absolute">
+          <h5 className="text-gray-900 text-lg flex items-center gap-1.5 hover:text-primary cursor-pointer">
             {instructorsData[0].name || "Instructor Name"}{" "}
             <ChevronRight className="text-gray-600 size-4" />
           </h5>
           <div
-            className="text-gray-900 mt-7 text-sm"
+            className="text-gray-900 text-sm"
             style={{ overflow: "hidden", height: "auto", maskImage: "none" }}
             dangerouslySetInnerHTML={{
               __html: instructorsData[0].description || "",

@@ -8,3 +8,11 @@ export const API_HEADERS = {
   "X-TENMS-SOURCE-PLATFORM": "web",
   accept: "application/json",
 };
+
+export const sectionsNeedToShow = [
+  "instructors",
+  "features",
+  "pointers",
+  "feature_explanations",
+  "about",
+];
