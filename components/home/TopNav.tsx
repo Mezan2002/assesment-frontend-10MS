@@ -1,18 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 
 import LanguageSwitchIcon from "@/helpers/ui/customSVG/LanguageSwitchIcon";
 
 const TopNav = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const currentLang = searchParams.get("lang") || "en";
 
   const toggleLanguage = () => {
     const newLang = currentLang === "en" ? "bn" : "en";
-    router.push(`/?lang=${newLang}`);
+    redirect(`?lang=${newLang}`);
   };
 
   return (
