@@ -15,7 +15,7 @@ const SectionsOfTheCourse = ({
   data,
 }: SectionsOfTheCourseProps) => {
   return (
-    <section className="px-[370px] py-5">
+    <section className="py-5">
       <h6 className="text-gray-900 text-2xl font-semibold mb-5">
         {data.name || "Details About The Course"}
       </h6>

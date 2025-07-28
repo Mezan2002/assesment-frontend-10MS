@@ -15,7 +15,7 @@ const TopNav = () => {
   };
 
   return (
-    <nav className="py-5 2xl:px-[370px] flex items-center justify-between">
+    <nav className="py-5 flex items-center justify-between">
       <Image
         src="/images/10mslogo-svg.svg"
         alt="10 minutes school logo"

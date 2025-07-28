@@ -1,5 +1,6 @@
 import Loader from "@/components/common-components/Loader";
 import CourseDetails from "@/components/home";
+import TopBanner from "@/components/home/TopBanner/TopBanner";
 import TopNav from "@/components/home/TopNav";
 import { getCourseData } from "@/lib/getCourseData";
 import { Data } from "@/types";
@@ -30,10 +31,25 @@ export default async function ProductDetailsPage({ searchParams }: Props) {
     return <Loader />;
   }
 
+  const TopBannerContent = {
+    title: data.title || "",
+    description: data.description || "",
+  };
+
   return (
     <main>
-      <TopNav />
-      <CourseDetails data={data} />
+      <div className="max-w-[1200px] mx-auto lg:px-5 xl:px-0">
+        <TopNav />
+      </div>
+      <TopBanner
+        topBannerContent={TopBannerContent}
+        trailerCardContent={data.media}
+        checklistContent={data.checklist}
+        buttonText={data.cta_text.name}
+      />
+      <div className="max-w-[1200px] mx-auto lg:px-5 xl:px-0">
+        <CourseDetails data={data} />
+      </div>
     </main>
   );
 }

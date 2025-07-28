@@ -31,9 +31,9 @@ const TopBanner = ({
       }}
       className="h-[300px]"
     >
-      <div className="flex flex-col gap-4 md:flex-row md:gap-12 md:py-20 items-start px-[370px] relative">
+      <div className="flex flex-col gap-4 md:flex-row md:gap-12 md:py-20 items-start relative max-w-[1200px] mx-auto px-5">
         <div className="flex flex-col justify-center w-8/12">
-          <h1 className="text-white mb-2 text-[21px] font-semibold  md:text-4xl">
+          <h1 className="text-white mb-2 text-[21px] lg:text-3xl font-semibold  xl:text-4xl">
             {title}
           </h1>
           <button className="flex flex-row flex-wrap gap-2 text-white">
@@ -49,7 +49,7 @@ const TopBanner = ({
             </span>
           </button>
           <div
-            className="text-gray-400 mt-2 text-md mr-28"
+            className="text-gray-400 mt-2 text-sm xl:text-md mr-28"
             style={{ overflow: "hidden", height: "auto", maskImage: "none" }}
             dangerouslySetInnerHTML={{ __html: description }}
           />
