@@ -6,15 +6,19 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 import MiniThumbnailController from "@/components/home/TopBanner/MiniThumbnailController";
 import MediaPlayerIcon from "@/helpers/ui/customSVG/MediaPlayerIcon";
 import { Media } from "@/types";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 const ImageSlider = ({ trailerCardData }: { trailerCardData: Media[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [videoId, setVideoId] = useState<string | null>(null);
 
   const handleNext = () => {
+    setVideoId(null);
     setCurrentIndex((prev) => (prev + 1) % trailerCardData.length);
   };
 
   const handlePrev = () => {
+    setVideoId(null);
     setCurrentIndex((prev) =>
       prev === 0 ? trailerCardData.length - 1 : prev - 1
     );
@@ -23,26 +27,51 @@ const ImageSlider = ({ trailerCardData }: { trailerCardData: Media[] }) => {
   const handleSelect = (index: number) => {
     setCurrentIndex(index);
   };
+
+  const handleVideoPlayer = (item: string) => {
+    setVideoId(item);
+  };
+
+  const opts: YouTubeProps["opts"] = {
+    height: "220",
+    width: "390",
+    playerVars: { autoplay: 1 },
+  };
+
   return (
     <div>
       <div className="relative w-full h-[220px]">
-        {trailerCardData[currentIndex].resource_type === "video" && (
+        {videoId ? (
+          <div>
+            <YouTube videoId={videoId} opts={opts} />
+          </div>
+        ) : (
           <>
-            <div className="absolute top-0 left-0 bg-black opacity-40 z-20 w-full h-full" />
-            <span className="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer">
-              <MediaPlayerIcon />
-            </span>
+            {trailerCardData[currentIndex].resource_type === "video" && (
+              <button
+                onClick={() =>
+                  handleVideoPlayer(
+                    trailerCardData[currentIndex].resource_value
+                  )
+                }
+              >
+                <div className="absolute top-0 left-0 bg-black opacity-40 z-20 w-full h-full" />
+                <span className="z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+                  <MediaPlayerIcon />
+                </span>
+              </button>
+            )}
+            <Image
+              src={
+                trailerCardData[currentIndex].thumbnail_url ||
+                trailerCardData[currentIndex].resource_value
+              }
+              alt={trailerCardData[currentIndex].name}
+              fill
+              className="object-fill"
+            />
           </>
         )}
-        <Image
-          src={
-            trailerCardData[currentIndex].thumbnail_url ||
-            trailerCardData[currentIndex].resource_value
-          }
-          alt={trailerCardData[currentIndex].name}
-          fill
-          className="object-fill"
-        />
 
         <button
           onClick={handlePrev}

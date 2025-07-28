@@ -47,8 +47,10 @@ const MiniThumbnailController = ({
               height={64}
               className="w-full h-full object-cover object-center"
             />
-            {trailerCardData[currentIndex].resource_type === "video" && (
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer">
+            {data.resource_type === "video" && (
+              <div
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer`}
+              >
                 <Image
                   src="https://10minuteschool.com/images/annual_exam/play_icon_2.svg"
                   alt="play button"

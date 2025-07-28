@@ -1,3 +1,4 @@
+import Loader from "@/components/common-components/Loader";
 import CourseDetails from "@/components/home";
 import { getCourseData } from "@/lib/getCourseData";
 import { Data } from "@/types";
@@ -25,7 +26,7 @@ export default async function HomePage({ searchParams }: Props) {
   }
 
   if (!data) {
-    return <div className="text-center">Loading...</div>;
+    return <Loader />;
   }
 
   return (

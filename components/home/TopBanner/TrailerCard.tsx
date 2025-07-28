@@ -26,10 +26,10 @@ const TrailerCard = ({
         <div className="flex items-center justify-between md:flex-col md:items-start flex-1">
           <div className="p-4 w-full">
             <div className="md:mb-3">
-              <h5 className="inline-block text-2xl font-semibold">৳3850</h5>
+              <h5 className="inline-block text-2xl font-semibold">৳1000</h5>
               <span className="inline-flex">
                 <del className="ml-2 text-base font-normal md:text-xl">
-                  ৳5000
+                  ৳3000
                 </del>
               </span>
             </div>

@@ -1,24 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend Assessment - 10 Minute School
+
+This is a Next.js project created for a frontend assessment. The application fetches and displays course data from the 10 Minute School API.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running with Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To build and run the application using Docker, use the following commands:
+
+```bash
+docker compose build
+docker compose up
+```
+
+## Features
+
+- Fetches course data from a remote API.
+- Displays course details including title, description, instructors, and features.
+- Language support for fetching data (English by default, can be changed with `lang` query parameter).
+- Responsive design with Tailwind CSS.
+- Image optimization with Next.js Image component.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework for server-side rendering and static site generation.
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/) - Typed superset of JavaScript.
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework.
+- [React Feather](https://feathericons.com/) - Simply beautiful open source icons.
+- [React YouTube](https://github.com/tjallingt/react-youtube) - Simple React component acting as a thin layer over the YouTube IFrame Player API.
+
+## API
+
+The application fetches data from the following API endpoint:
+
+`https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course`
+
+The API endpoint can be configured using the `NEXT_PUBLIC_API_URL` environment variable.
 
 ## Learn More
 
