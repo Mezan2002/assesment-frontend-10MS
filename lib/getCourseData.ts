@@ -8,7 +8,7 @@ export async function getCourseData(lang: string = "en"): Promise<ApiResponse> {
   const apiUrl = `${baseApiUrl}?lang=${lang}`;
   const response = await fetch(apiUrl, {
     headers: API_HEADERS,
-    // next: { revalidate: 3600 },
+    next: { revalidate: 3600 },
   });
 
   if (!response.ok) {
