@@ -1,4 +1,4 @@
-# Frontend Assessment - 10 Minute School (Didn't make is responsive working fine only on 1920px x 1080px screen)
+# Frontend Assessment - 10 Minute School (Didn't make this responsive working fine only on 1920px x 1080px screen)
 
 This is a Next.js project created for a frontend assessment. The application fetches and displays course data from the 10 Minute School API.
 
